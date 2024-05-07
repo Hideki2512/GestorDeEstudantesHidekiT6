@@ -1,6 +1,6 @@
 ﻿namespace GestorDeEstudantesHidekiT6
 {
-    partial class FormLogin
+    partial class Form_Login
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -104,9 +104,11 @@
             // pictureBoxUsuario
             // 
             this.pictureBoxUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pictureBoxUsuario.Image = global::GestorDeEstudantesHidekiT6.Properties.Resources.user_icon;
             this.pictureBoxUsuario.Location = new System.Drawing.Point(83, 45);
             this.pictureBoxUsuario.Name = "pictureBoxUsuario";
             this.pictureBoxUsuario.Size = new System.Drawing.Size(160, 120);
+            this.pictureBoxUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxUsuario.TabIndex = 5;
             this.pictureBoxUsuario.TabStop = false;
             // 
@@ -177,7 +179,7 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(327, 130);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
-            // FormLogin
+            // Form_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,7 +187,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel3);
-            this.Name = "FormLogin";
+            this.Name = "Form_Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUsuario)).EndInit();

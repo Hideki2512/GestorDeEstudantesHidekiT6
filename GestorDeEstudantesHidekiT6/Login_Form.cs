@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace GestorDeEstudantesHidekiT6
 {
-    public partial class FormLogin : Form
+    public partial class Form_Login : Form
     {
-        public FormLogin()
+        public Form_Login()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form_Login_Load(object sender, EventArgs e)
         {
 
         }
