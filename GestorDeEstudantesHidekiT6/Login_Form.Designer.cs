@@ -189,7 +189,7 @@
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "Form_Login";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form_Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUsuario)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
