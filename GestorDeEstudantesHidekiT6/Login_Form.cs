@@ -21,5 +21,15 @@ namespace GestorDeEstudantesHidekiT6
         {
 
         }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
