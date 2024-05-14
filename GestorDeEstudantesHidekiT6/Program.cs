@@ -16,7 +16,17 @@ namespace GestorDeEstudantesHidekiT6
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Login());
+            //Application.Run(new Form_Login());
+
+            Form_Login login_form = new Form_Login(); 
+            if (login_form.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new FormMenuPrincipal());
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

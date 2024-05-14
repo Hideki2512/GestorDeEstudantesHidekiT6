@@ -45,11 +45,12 @@ namespace GestorDeEstudantesHidekiT6
 
             if (minhaTabela.Rows.Count > 0) 
             {
-                MessageBox.Show("Existem dados!");
+                //MessageBox.Show("Existem dados!");
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show("Não foram encontrados dados.");
+                MessageBox.Show("Usuário ou senha inválidos.", "Erro de login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

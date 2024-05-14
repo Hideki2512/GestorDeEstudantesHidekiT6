@@ -121,6 +121,7 @@
             this.textBoxSenha.Name = "textBoxSenha";
             this.textBoxSenha.Size = new System.Drawing.Size(223, 30);
             this.textBoxSenha.TabIndex = 6;
+            this.textBoxSenha.UseSystemPasswordChar = true;
             // 
             // buttonCancelar
             // 
@@ -190,6 +191,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "Form_Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form_Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUsuario)).EndInit();
