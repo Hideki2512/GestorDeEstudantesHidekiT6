@@ -34,7 +34,9 @@ namespace GestorDeEstudantesHidekiT6
 
             MySqlDataAdapter meuAdaptadorSql = new MySqlDataAdapter();
             DataTable minhaTabela = new DataTable();
-            MySqlCommand meuComandoSql = new MySqlCommand("SELECT * FROM `usuario` WHERE `nome_de_usuario` = @usuario AND `senha` = @senha", meuBancoDeDados.getConexao);
+            MySqlCommand meuComandoSql = 
+                new MySqlCommand("SELECT * FROM `usuarios` WHERE `nome_de_usuario` = @usuario AND `senha` = @senha",
+                meuBancoDeDados.getConexao);
 
             meuComandoSql.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = textBoxUsuario.Text;
             meuComandoSql.Parameters.Add("@senha", MySqlDbType.VarChar).Value = textBoxSenha.Text;
@@ -43,7 +45,7 @@ namespace GestorDeEstudantesHidekiT6
 
             meuAdaptadorSql.Fill(minhaTabela);
 
-            if (minhaTabela.Rows.Count > 0) 
+            if (minhaTabela.Rows.Count > 0)
             {
                 //MessageBox.Show("Existem dados!");
                 this.DialogResult = DialogResult.OK;
