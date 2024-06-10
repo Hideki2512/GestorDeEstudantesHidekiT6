@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GestorDeEstudantesHidekiT6
+namespace GestorDeEstudantesT6
 {
     internal static class Program
     {
@@ -16,14 +16,14 @@ namespace GestorDeEstudantesHidekiT6
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form_Login());
+            //Application.Run(new Login_Form());
 
-            Form_Login login_form = new Form_Login(); 
-            if (login_form.ShowDialog() == DialogResult.OK)
+            Login_Form loginForm = new Login_Form();
+            if (loginForm.ShowDialog() == DialogResult.OK)
             {
                 Application.Run(new FormMenuPrincipal());
             }
-            else
+            else 
             {
                 Application.Exit();
             }

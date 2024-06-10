@@ -9,16 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace GestorDeEstudantesHidekiT6
+namespace GestorDeEstudantesT6
 {
-    public partial class Form_Login : Form
+    public partial class Login_Form : Form
     {
-        public Form_Login()
+        public Login_Form()
         {
             InitializeComponent();
         }
 
-        private void Form_Login_Load(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Form_Load(object sender, EventArgs e)
         {
 
         }
@@ -35,11 +40,13 @@ namespace GestorDeEstudantesHidekiT6
             MySqlDataAdapter meuAdaptadorSql = new MySqlDataAdapter();
             DataTable minhaTabela = new DataTable();
             MySqlCommand meuComandoSql = 
-                new MySqlCommand("SELECT * FROM `usuarios` WHERE `nome_de_usuario` = @usuario AND `senha` = @senha",
+                new MySqlCommand("SELECT * FROM `usuarios` WHERE `nome_de_usuario` = @usuario AND `senha` = @senha", 
                 meuBancoDeDados.getConexao);
 
-            meuComandoSql.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = textBoxUsuario.Text;
-            meuComandoSql.Parameters.Add("@senha", MySqlDbType.VarChar).Value = textBoxSenha.Text;
+            meuComandoSql.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = 
+                textBoxUsuario.Text;
+            meuComandoSql.Parameters.Add("@senha", MySqlDbType.VarChar).Value = 
+                textBoxSenha.Text;
 
             meuAdaptadorSql.SelectCommand = meuComandoSql;
 
@@ -52,7 +59,8 @@ namespace GestorDeEstudantesHidekiT6
             }
             else
             {
-                MessageBox.Show("Usuário ou senha inválidos.", "Erro de login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuário ou senha inválidos.", 
+                    "Erro de login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GestorDeEstudantesHidekiT6
+namespace GestorDeEstudantesT6
 {
     public partial class FormMenuPrincipal : Form
     {
         public FormMenuPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void cadastrarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormInserirEstudante inserirEstudante = new FormInserirEstudante();
+            inserirEstudante.Show();
         }
     }
 }
