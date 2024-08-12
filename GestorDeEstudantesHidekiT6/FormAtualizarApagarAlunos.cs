@@ -13,6 +13,7 @@ namespace GestorDeEstudantesT6
 {
     public partial class FormAtualizarApagarAlunos : Form
     {
+        Estudante estudante = new Estudante();
         public FormAtualizarApagarAlunos()
         {
             InitializeComponent();
@@ -65,15 +66,15 @@ namespace GestorDeEstudantesT6
                 pictureBoxFoto.Image.Save(foto,
                     pictureBoxFoto.Image.RawFormat);
 
-                if (estudante.inserirEstudante(nome, sobrenome, nascimento,
+                if (estudante.atualizarEstudante(id, nome, sobrenome, nascimento,
                     telefone, genero, endereco, foto))
                 {
-                    MessageBox.Show("Novo aluno cadastrado!", "Sucesso!",
+                    MessageBox.Show("Dados alterados!", "Sucesso!",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Aluno não cadastrado!", "Falha!",
+                    MessageBox.Show("Dados não alterados!", "Falha!",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -86,7 +87,27 @@ namespace GestorDeEstudantesT6
 
         private void buttonApagar_Click(object sender, EventArgs e)
         {
+            // Remove o estudante
+            int id = Convert.ToInt32(textBoxId.Text);
+            if (MessageBox.Show("Tem certea que deseja apagar esse aluno?",
+                "Apagar Aluno", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (estudante.apagarEstudante(id))
+                {
+                    MessageBox.Show("Estudante removido!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                    //Limpa as caixas de texto
+                    textBoxId.Text = "";
+                    textBoxNome.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Estudante não removido!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxId.Text = "";
+                    textBoxNome.Text = "";
+                }
+            }
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
