@@ -252,6 +252,7 @@
             this.buttonBuscar.TabIndex = 39;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // FormAtualizarApagarAlunos
             // 
@@ -279,6 +280,7 @@
             this.Controls.Add(this.label2);
             this.Name = "FormAtualizarApagarAlunos";
             this.Text = "FormAtualizarApagarAlunos";
+            this.Load += new System.EventHandler(this.FormAtualizarApagarAlunos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
