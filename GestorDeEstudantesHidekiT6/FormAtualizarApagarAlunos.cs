@@ -138,7 +138,34 @@ namespace GestorDeEstudantesT6
             int id = Convert.ToInt32(textBoxId.Text);
             MeuBancoDeDados meuBancoDeDados = new MeuBancoDeDados();
 
-            MySqlCommand comando = new MySqlCommand("SELECT `id`, `nome`, `sobrenome`, `nascimento`, `genero`, `telefone`, `endereco`, `foto`, FROM `estudantes` WHERE `id`=" + id,);
+            MySqlCommand comando = new MySqlCommand("SELECT `id`, `nome`, `sobrenome`, `nascimento`, `genero`, `telefone`, `endereco`, `foto`, FROM `estudantes` WHERE `id`=" +id, meuBancoDeDados.getConexao);
+
+            DataTable tabela = estudante.getEstudantes(comando);
+
+            if (tabela.Rows.Count > 0)
+            {
+                textBoxNome.Text = tabela.Rows[0]["nome"].ToString();
+                textBoxSobrenome.Text = tabela.Rows[0]["sobrenome"].ToString();
+                textBoxTelefone.Text = tabela.Rows[0]["telefone"].ToString();
+                textBoxEndereco.Text = tabela.Rows[0]["endereco"].ToString() ;
+                dateTimePickerNascimento.Value = (DateTime)tabela.Rows[0]["nascimento"];
+                if (tabela.Rows[0]["genero"].ToString() == "Feminino")
+                {
+                    radioButtonFeminino.Checked = true;
+                }
+                else
+                {
+                    radioButtonMasculino.Checked = true;
+                }
+            }
+
+            //A foto
+            byte[] imagem = (byte[])tabela.Rows[0]["foto"];
+            //"objeto" intermediário entre a foto que está na tabela
+            //e a foto que está salva no banco de dados
+            MemoryStream fotoDoAluno = new MemoryStream(imagem);
+            //reconstrói a imagem com base em um "memory stream"
+            pictureBoxFoto.Image = Image.FromStream(fotoDoAluno);
 
         }
 
