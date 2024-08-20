@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -111,9 +112,9 @@ namespace GestorDeEstudantesT6
             }
         }
 
-        private void textBoxId_TextChanged(object sender, EventArgs e)
+        private void textBoxId_TextChanged(object sender, KeyPressEventArgs e)
         {
-
+            
         }
         bool Verificar()
         {
@@ -133,45 +134,60 @@ namespace GestorDeEstudantesT6
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-            // Busca estudante pela ID
-            // Já salva a ID convertida para INTEIRO
-            int id = Convert.ToInt32(textBoxId.Text);
-            MeuBancoDeDados meuBancoDeDados = new MeuBancoDeDados();
-
-            MySqlCommand comando = new MySqlCommand("SELECT `id`, `nome`, `sobrenome`, `nascimento`, `genero`, `telefone`, `endereco`, `foto`, FROM `estudantes` WHERE `id`=" +id, meuBancoDeDados.getConexao);
-
-            DataTable tabela = estudante.getEstudantes(comando);
-
-            if (tabela.Rows.Count > 0)
+            try
             {
-                textBoxNome.Text = tabela.Rows[0]["nome"].ToString();
-                textBoxSobrenome.Text = tabela.Rows[0]["sobrenome"].ToString();
-                textBoxTelefone.Text = tabela.Rows[0]["telefone"].ToString();
-                textBoxEndereco.Text = tabela.Rows[0]["endereco"].ToString() ;
-                dateTimePickerNascimento.Value = (DateTime)tabela.Rows[0]["nascimento"];
-                if (tabela.Rows[0]["genero"].ToString() == "Feminino")
+                // Busca estudante pela ID
+                // Já salva a ID convertida para INTEIRO
+                int id = Convert.ToInt32(textBoxId.Text);
+                MeuBancoDeDados meuBancoDeDados = new MeuBancoDeDados();
+
+                MySqlCommand comando = new MySqlCommand("SELECT `id`, `nome`, `sobrenome`, `nascimento`, `genero`, `telefone`, `endereco`, `foto`, FROM `estudantes` WHERE `id`=" + id, meuBancoDeDados.getConexao);
+
+                DataTable tabela = estudante.getEstudantes(comando);
+
+                if (tabela.Rows.Count > 0)
                 {
-                    radioButtonFeminino.Checked = true;
+                    textBoxNome.Text = tabela.Rows[0]["nome"].ToString();
+                    textBoxSobrenome.Text = tabela.Rows[0]["sobrenome"].ToString();
+                    textBoxTelefone.Text = tabela.Rows[0]["telefone"].ToString();
+                    textBoxEndereco.Text = tabela.Rows[0]["endereco"].ToString();
+                    dateTimePickerNascimento.Value = (DateTime)tabela.Rows[0]["nascimento"];
+                    if (tabela.Rows[0]["genero"].ToString() == "Feminino")
+                    {
+                        radioButtonFeminino.Checked = true;
+                    }
+                    else
+                    {
+                        radioButtonMasculino.Checked = true;
+                    }
                 }
-                else
-                {
-                    radioButtonMasculino.Checked = true;
-                }
+
+                //A foto
+                byte[] imagem = (byte[])tabela.Rows[0]["foto"];
+                //"objeto" intermediário entre a foto que está na tabela
+                //e a foto que está salva no banco de dados
+                MemoryStream fotoDoAluno = new MemoryStream(imagem);
+                //reconstrói a imagem com base em um "memory stream"
+                pictureBoxFoto.Image = Image.FromStream(fotoDoAluno);
             }
-
-            //A foto
-            byte[] imagem = (byte[])tabela.Rows[0]["foto"];
-            //"objeto" intermediário entre a foto que está na tabela
-            //e a foto que está salva no banco de dados
-            MemoryStream fotoDoAluno = new MemoryStream(imagem);
-            //reconstrói a imagem com base em um "memory stream"
-            pictureBoxFoto.Image = Image.FromStream(fotoDoAluno);
-
+            catch
+            {
+                MessageBox.Show("Digite uma ID válida!", "ID inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        
 
         private void FormAtualizarApagarAlunos_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
