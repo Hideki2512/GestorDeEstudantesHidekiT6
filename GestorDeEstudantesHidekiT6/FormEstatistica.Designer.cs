@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panelTotal = new System.Windows.Forms.Panel();
-            this.panelMeninos = new System.Windows.Forms.Panel();
-            this.panelMeninas = new System.Windows.Forms.Panel();
             this.labelTotal = new System.Windows.Forms.Label();
+            this.panelMeninos = new System.Windows.Forms.Panel();
             this.labelMeninos = new System.Windows.Forms.Label();
+            this.panelMeninas = new System.Windows.Forms.Panel();
             this.labelMeninas = new System.Windows.Forms.Label();
             this.panelTotal.SuspendLayout();
             this.panelMeninos.SuspendLayout();
@@ -48,24 +48,6 @@
             this.panelTotal.Size = new System.Drawing.Size(776, 195);
             this.panelTotal.TabIndex = 0;
             // 
-            // panelMeninos
-            // 
-            this.panelMeninos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelMeninos.Controls.Add(this.labelMeninos);
-            this.panelMeninos.Location = new System.Drawing.Point(12, 213);
-            this.panelMeninos.Name = "panelMeninos";
-            this.panelMeninos.Size = new System.Drawing.Size(385, 225);
-            this.panelMeninos.TabIndex = 1;
-            // 
-            // panelMeninas
-            // 
-            this.panelMeninas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panelMeninas.Controls.Add(this.labelMeninas);
-            this.panelMeninas.Location = new System.Drawing.Point(403, 213);
-            this.panelMeninas.Name = "panelMeninas";
-            this.panelMeninas.Size = new System.Drawing.Size(385, 225);
-            this.panelMeninas.TabIndex = 2;
-            // 
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
@@ -76,6 +58,17 @@
             this.labelTotal.TabIndex = 3;
             this.labelTotal.Text = "Total de Alunos: 999";
             this.labelTotal.Click += new System.EventHandler(this.label1_Click);
+            this.labelTotal.MouseEnter += new System.EventHandler(this.labelTotal_MouseEnter);
+            this.labelTotal.MouseLeave += new System.EventHandler(this.labelTotal_MouseLeave);
+            // 
+            // panelMeninos
+            // 
+            this.panelMeninos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panelMeninos.Controls.Add(this.labelMeninos);
+            this.panelMeninos.Location = new System.Drawing.Point(12, 213);
+            this.panelMeninos.Name = "panelMeninos";
+            this.panelMeninos.Size = new System.Drawing.Size(385, 225);
+            this.panelMeninos.TabIndex = 1;
             // 
             // labelMeninos
             // 
@@ -86,6 +79,17 @@
             this.labelMeninos.Size = new System.Drawing.Size(123, 22);
             this.labelMeninos.TabIndex = 4;
             this.labelMeninos.Text = "Meninos: 50%";
+            this.labelMeninos.MouseEnter += new System.EventHandler(this.labelMeninos_MouseEnter);
+            this.labelMeninos.MouseLeave += new System.EventHandler(this.labelMeninos_MouseLeave);
+            // 
+            // panelMeninas
+            // 
+            this.panelMeninas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelMeninas.Controls.Add(this.labelMeninas);
+            this.panelMeninas.Location = new System.Drawing.Point(403, 213);
+            this.panelMeninas.Name = "panelMeninas";
+            this.panelMeninas.Size = new System.Drawing.Size(385, 225);
+            this.panelMeninas.TabIndex = 2;
             // 
             // labelMeninas
             // 
@@ -96,6 +100,8 @@
             this.labelMeninas.Size = new System.Drawing.Size(123, 22);
             this.labelMeninas.TabIndex = 5;
             this.labelMeninas.Text = "Meninas: 50%";
+            this.labelMeninas.MouseEnter += new System.EventHandler(this.labelMeninas_MouseEnter);
+            this.labelMeninas.MouseLeave += new System.EventHandler(this.labelMeninas_MouseLeave);
             // 
             // FormEstatistica
             // 
